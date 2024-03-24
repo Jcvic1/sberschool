@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         getField(field, file);
         printField(field);
         fclose(file);
-        game_over();
+        // game_over();
         getch();
     }
     endwin();

@@ -6,47 +6,31 @@
 #define ALIVE '*'
 #define DEAD ' '
 
-void printField(int field[HEIGHT][WIDTH]);
+void printField(char field[HEIGHT][WIDTH]);
 
-void getField(int field[HEIGHT][WIDTH], FILE *file);
+void getField(char field[HEIGHT][WIDTH]);
 
 void game_over();
 
 int main(int argc, char *argv[]){
-    int field[HEIGHT][WIDTH], err = 0;
-    FILE *file;
+    char field[HEIGHT][WIDTH], err = 0;
 
-    if(argc != 2){
-        printf("Argument missing, pass file name as arguement.\n");
-        err = 1;
-    }
 
-    if (!err) {
-        if (!(file = fopen(argv[1], "r"))) {
-            printf("Error opening file.\n");
-            err = 1;
-        }
-    }
+    getField(field);
+    printField(field);
+    // game_over();
 
-    if (!err) {
-
-        getField(field, file);
-        printField(field);
-        fclose(file);
-        // game_over();
-
-    }
     return 0;
 
 }
 
 
 
-void getField(int field[HEIGHT][WIDTH], FILE *file) {
+void getField(char field[HEIGHT][WIDTH]) {
     char buff = ' ';
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH + 1; j++) {
-            fscanf(file, "%c", &buff);
+            scanf("%c", &buff);
             if (buff != '\n') {
                 field[i][j] = buff;
             }
@@ -54,7 +38,7 @@ void getField(int field[HEIGHT][WIDTH], FILE *file) {
     }
 }
 
-void printField(int field[HEIGHT][WIDTH]) {
+void printField(char field[HEIGHT][WIDTH]) {
     printf("\033c");
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {

@@ -7,16 +7,16 @@
 #define ALIVE '*'
 #define DEAD ' '
 
-void printField(int field[HEIGHT][WIDTH]);
+void printField(char field[HEIGHT][WIDTH]);
 
-void getField(int field[HEIGHT][WIDTH], FILE *file);
+void getField(char field[HEIGHT][WIDTH], FILE *file);
 
 void game_over();
 int main(int argc, char *argv[])
 {
     initscr();
 
-    int field[HEIGHT][WIDTH], err = 0;
+    char field[HEIGHT][WIDTH], err = 0;
     FILE *file;
 
     if (argc != 2)
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void getField(int field[HEIGHT][WIDTH], FILE *file)
+void getField(char field[HEIGHT][WIDTH], FILE *file)
 {
     char buff = ' ';
     for (int i = 0; i < HEIGHT; i++)
@@ -63,7 +63,7 @@ void getField(int field[HEIGHT][WIDTH], FILE *file)
     }
 }
 
-void printField(int field[HEIGHT][WIDTH])
+void printField(char field[HEIGHT][WIDTH])
 {
     for (int i = 0; i < HEIGHT; i++)
     {
